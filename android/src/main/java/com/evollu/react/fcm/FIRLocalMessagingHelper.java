@@ -133,6 +133,12 @@ public class FIRLocalMessagingHelper {
                 notification.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText));
             }
 
+            String bigPicture = bundle.getString("big_picture");
+            if(bigPicture != null){
+                Bitmap image = getBitmapFromURL(bigPicture);
+                notification.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image));
+            }
+
             //sound
             String soundName = bundle.getString("sound", "default");
             if (!soundName.equalsIgnoreCase("default")) {
