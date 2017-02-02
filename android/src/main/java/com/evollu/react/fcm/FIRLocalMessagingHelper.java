@@ -135,8 +135,9 @@ public class FIRLocalMessagingHelper {
 
             String bigPicture = bundle.getString("big_picture");
             if(bigPicture != null){
+                String bigPictureText = bundle.getString("body");
                 Bitmap image = getBitmapFromURL(bigPicture);
-                notification.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image));
+                notification.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image).setSummaryText(bigPictureText));
             }
 
             //sound
