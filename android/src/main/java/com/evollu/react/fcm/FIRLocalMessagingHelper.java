@@ -112,7 +112,7 @@ public class FIRLocalMessagingHelper {
             notification.setSmallIcon(smallIconResId);
 
             //large icon
-            String largeIcon = bundle.getString("large-icon");
+            String largeIcon = bundle.getString("large_icon");
             if(largeIcon != null && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
                 if (largeIcon.startsWith("http://") || largeIcon.startsWith("https://")) {
                     Bitmap bitmap = getBitmapFromURL(largeIcon);
@@ -163,7 +163,7 @@ public class FIRLocalMessagingHelper {
 
             //vibrate
             if(bundle.containsKey("vibrate")){
-                long vibrate = bundle.getLong("vibrate", Math.round(bundle.getDouble("vibrate", bundle.getInt("vibrate"))));
+                long vibrate = Math.round(bundle.getDouble("vibrate", DEFAULT_VIBRATION));
                 if(vibrate > 0){
                     notification.setVibrate(new long[]{0, vibrate});
                 }else{
@@ -228,7 +228,7 @@ public class FIRLocalMessagingHelper {
             return;
         }
 
-        Long fireDate = bundle.getLong("fire_date", Math.round(bundle.getDouble("fire_date")));
+        Long fireDate = Math.round(bundle.getDouble("fire_date"));
         if (fireDate == 0) {
             Log.e(TAG, "failed to schedule notification because fire date is missing");
             return;
